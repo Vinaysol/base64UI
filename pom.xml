@@ -6,10 +6,12 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
 
+
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
+
 
   <name>base64UI</name>
   <url>http://maven.apache.org</url>
@@ -24,6 +26,7 @@
   </dependencies>
 
 <build>
+  <finalName>base64Convertor</finalName>
   <plugins>
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
@@ -40,6 +43,24 @@
       </configuration>
     </plugin>
     <plugin>
+      <groupId>com.coderplus.maven.plugins</groupId>
+      <artifactId>copy-rename-maven-plugin</artifactId>
+      <version>1.0</version>
+      <executions>
+        <execution>
+          <id>copy-file</id>
+          <phase>post-integration-test</phase>
+          <goals>
+            <goal>copy</goal>
+          </goals>
+          <configuration>
+            <sourceFile>${pom.basedir}/target/base64Convertor.jar</sourceFile>
+            <destinationFile>${pom.basedir}/src/macApp/base64Convertor.app/Contents/java/base64Convertor.jar</destinationFile>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+    <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-compiler-plugin</artifactId>
       <configuration>
@@ -47,6 +68,29 @@
         <target>8</target>
       </configuration>
     </plugin>
+    <plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+      <version>3.4.2</version>
+    <configuration>
+      <appendAssemblyId>false</appendAssemblyId>
+      <finalName>base64Convertor</finalName>
+      <descriptors>
+        <descriptor>${basedir}/assembly.xml</descriptor>
+      </descriptors>
+    </configuration>
+    <executions>
+      <execution>
+        <id>create-archive</id>
+        <phase>install</phase>
+        <goals>
+          <goal>single</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
   </plugins>
+
 </build>
+
+
 </project>

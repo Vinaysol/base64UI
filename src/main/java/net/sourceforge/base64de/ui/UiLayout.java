@@ -16,7 +16,7 @@ public class UiLayout extends Frame {
         Frame fr=new Frame();
         fr.setTitle("Decoded           Encoded");
         fr.setLayout(new GridLayout(1,1));
-        fr.setSize(400, 400);
+        fr.setSize(600, 200);
         fr.setBackground(Color.WHITE);
         textAreaDecode(fr);
         textAreaEncode(fr);
