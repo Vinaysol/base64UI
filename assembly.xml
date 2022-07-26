@@ -8,7 +8,7 @@ xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assemb
 <includeBaseDirectory>false</includeBaseDirectory>
 <fileSets>
 <fileSet>
-<directory>${pom.basedir}/src/macApp/base64Convertor.app</directory>
+<directory>${pom.basedir}/src/macApp/base64Convertor.app/*</directory>
 <useDefaultExcludes>false</useDefaultExcludes>
 <outputDirectory>${pom.basedir}/../</outputDirectory>
 <includes>
